@@ -1,8 +1,10 @@
-function gpioaction(arg1,arg2){       
+
+$(function(){               
+    $('.gpio-button').on('click', function(e,req,res){       
             var data = {};
             data.action = "write";
-            data.gpio = arg1;
-            data.status = arg2;
+            data.gpio = $(this).data("gpio");
+            data.status = $(this).data("status");
             console.log(data);
             $.ajax({
                 type: 'POST',
@@ -12,8 +14,9 @@ function gpioaction(arg1,arg2){
                 error: function(data) {
                     alert("Error");
                 },
-                success: function (data){
-                    alert("Worked");
+                succes: function(data) {
+                    alert("succes");
                 }
-            });
-        }             
+        });
+    });             
+});          

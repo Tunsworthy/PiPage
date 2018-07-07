@@ -1,13 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  #container
-   .row
-    .col-6
-    .col
-     button(class="btn btn-primary" onclick='gpioaction(2,0)') On 
-     | &nbsp;
-     button(class="btn btn-primary" onclick='gpioaction(2,1)') Off
-    .col
+
+ h1= title
+ p Welcome to #{title}
+ #container-fluid
+  .row
+   .col(style="width:35%")
+   .col
+    .card.card-primary(style="width:145px")
+     .card-header #[strong Relay Action ]
+     .card-body 
+      button(class="btn btn-primary" data-gpio="2" data-status="0").gpio-button On 
+      | &nbsp;
+      button(class="btn btn-primary" data-gpio="2" data-status="1").gpio-button Off
+   .col(style="width:35%")
