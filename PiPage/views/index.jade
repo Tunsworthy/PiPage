@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  #container
+   .row
+    .col-6
+    .col
+     button(class="btn btn-primary" onclick='gpioaction(2,0)') On 
+     | &nbsp;
+     button(class="btn btn-primary" onclick='gpioaction(2,1)') Off
+    .col
