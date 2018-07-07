@@ -11,6 +11,9 @@ function gpioaction(arg1,arg2){
                 url: '/ajax',                       
                 error: function(data) {
                     alert("Error");
+                },
+                success: function (data){
+                    alert("Worked");
                 }
             });
         }             
