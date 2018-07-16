@@ -8,4 +8,6 @@ html
     script(type='text/javascript' src='/js/bootstrap.min.js')
     script(type='text/javascript' src='/javascripts/launch.js')
   body
+    if expressFlash.length > 0
+     .alert.alert-primary <strong>FLASH!</strong> #{ expressFlash }
     block content

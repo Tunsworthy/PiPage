@@ -1,7 +1,6 @@
 extends layout
 
 block content
-
  h1= title
  p Welcome to #{title}
  #container-fluid
@@ -14,4 +13,9 @@ block content
       button(class="btn btn-primary" data-gpio="2" data-status="0").gpio-button On 
       | &nbsp;
       button(class="btn btn-primary" data-gpio="2" data-status="1").gpio-button Off
+    | &nbsp;
+    .card.card-primary(style="max-width:170px")
+      .card-header #[strong Flash Message ]
+      .card-body 
+       a(class="btn btn-primary" href="/indexflash/2/on") Flash Message
    .col(style="width:35%")
