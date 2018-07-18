@@ -8,8 +8,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.all('/indexflash/:gpio/:status', function(req, res,next){
-     console.log(req.params)
-    //rpio.write(2,low)
+    console.log(req.params)
+    //var data = {};
+    //data.action = "write";
+    //data.gpio = req.params.gpio;
+    //data.status = req.params.status;
+    //	function(e){
+    //		rpio.write(req.data.gpio, + req.data.status);
+
+    //	}
+    //console.log(data)
     req.flash('success', 'Index Flash');
     res.redirect(301, '/');
 });

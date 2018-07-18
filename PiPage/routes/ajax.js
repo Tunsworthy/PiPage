@@ -8,6 +8,8 @@ module.exports = function(req, res) {
                 rpio.init({mapping: 'gpio'});
                 rpio.open(req.body.gpio, rpio.OUTPUT, + req.body.status);
                 rpio.write(req.body.gpio, + req.body.status);
+                rpio.sleep(1);
+                rpio.write(req.body.gpio, 1);
                 res.contentType('json');
                 res.send({ gpio: req.body.gpio, status: req.body.status });
             break;
