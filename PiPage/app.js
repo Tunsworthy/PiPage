@@ -61,10 +61,10 @@ app.use(function(err, req, res, next) {
 });
 
 // Route that creates a flash message using the express-flash module
-app.all('/express-flash', function( req, res ) {
-    req.flash('success', 'This is a flash message using the express-flash module.');
-    res.redirect(301, '/');
-});
+//app.all('/express-flash', function( req, res ) {
+//    req.flash('success', 'This is a flash message using the express-flash module.');
+//    res.redirect(301, '/');
+//});
 
 
 
