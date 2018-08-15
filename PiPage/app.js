@@ -43,13 +43,6 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redi
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 
-var ajax = require('./routes/ajax');
-app.post('/ajax', ajax);
- //catch 404 and forward to error handler
-//app.use(function(req, res, next) {
-//  next(createError(404));
-//});
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -59,13 +52,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// Route that creates a flash message using the express-flash module
-//app.all('/express-flash', function( req, res ) {
-//    req.flash('success', 'This is a flash message using the express-flash module.');
-//    res.redirect(301, '/');
-//});
-
-
 
 module.exports = app;
