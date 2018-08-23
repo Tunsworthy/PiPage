@@ -14,7 +14,8 @@ router.all('/relay/:gpio/:status', function(req, res,next){
         action.status = (+req.params.status);
         action.gpio = (+req.params.gpio);
     console.log(action);
-    
+    rpio.open(action.gpio, rpio.OUTPUT, rpio.LOW);
+
     //Send action (on or off)
     rpio.write(action.gpio,action.status);
     console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
