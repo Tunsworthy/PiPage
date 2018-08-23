@@ -29,6 +29,12 @@ router.all('/relay/:gpio/:status', function(req, res,next){
         };
      //If power off
         if (action.status === 1) {
+            rpio.sleep(10);
+            rpio.write(action.gpio,(action.status - 1));
+            console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
+            req.flash('success', 'Power on sent');
+            res.redirect(301, '/');    
+
             req.flash('success', 'Power off sent');
             res.redirect(301, '/');
         };
