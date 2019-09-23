@@ -1,0 +1,51 @@
+Requests
+*Send latest photos (max 5 + Link)
+*Update on last check-in (GPS location?)
+*Update on Itiniery
+
+
+Posts
+*Check-in location
+*sign off itiniery
+*Create itiniery Item
+	-Start Date
+	-End Date
+	-Type (Flight,Hotel,Activity)
+	-FlightNo
+	-Hotelname
+	-
+
+Itiniery
+
+-Fights
+	-FlightNo
+	-Booking No
+	-Source Airport
+	-Destination Airport
+	-Start Time/Date
+	-End Time/Date
+	-Checkin (boolen)
+
+-Bus
+	-BusNo
+	-Booking No
+	-Source Busstop
+	-Destination Busstop
+	-Start Time/Date
+	-End Time/Date
+	-Checkin (boolen)
+
+-Accomidation
+	-StartDate
+	-EndDate
+	-Location
+	-Name
+	-Booking no
+	-Checkin (boolen)
+
+-Activity
+	-StartDate/Time
+	-EndDate/Time
+	-Name
+	-Description
+	-Checkin (boolen)

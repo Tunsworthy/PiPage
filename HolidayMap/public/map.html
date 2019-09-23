@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Tom and MQ's Travel Map</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  <script src="https://cdn.jsdelivr.net/npm/zl-fetch@2.1.8"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+function initMap() {
+var lineSymbol = {
+  path: 'M 0,-1 0,1',
+  strokeOpacity: 1,
+  scale: 2,
+};
+var Symbolarrow =  {
+  path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+  offset: '100%',
+  fillColor: "black",
+  fillOpacity: 1,
+  strokeOpacity: 1,
+  };
+  function sleep(ms) {return new Promise(resolve => setTimeout(resolve, ms));}
+  var iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+  var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDg3ZTE3N2YwNWMzMDEyNDc0MWIzYzgiLCJpYXQiOjE1NjkxODYxNjd9.JHnTyllaXWWgwvNgzFDqikHxMpxRZxnKWzISYEcjmjE'
+  var urlcheckin = 'https://holidayapi.herokuapp.com/Checkin/latest'
+  var urllocations = 'https://holidayapi.herokuapp.com/locations'
+  var urlroutes = 'https://holidayapi.herokuapp.com/routes'
+  
+async function firstAsync() {
+   let promise = new Promise((res, rej) => {
+      zlFetch(urlcheckin,{token: token})
+      .then(response => {
+        window.checkin = response.body;
+        //console.log(window.checkin)
+///////////////start location////////////////////
+        zlFetch(urllocations,{token: token})
+        .then(response => {
+            var locations = response.body;
+///get the last checkin and make it centre---
+         const getcenter = locations.find(location => location.code == window.checkin.Location);
+         var center = new google.maps.LatLng(getcenter.lat , getcenter.lng)
+         var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: center,
+          mapTypeId: 'roadmap'
+        }); 
+
+            for(var location of locations){
+              var dynamicVarName = location.code;
+              window[dynamicVarName] = new google.maps.LatLng(location.lat , location.lng)
+              if (location.code == window.checkin.Location){
+                var marker = new google.maps.Marker({
+                  position: window[dynamicVarName],
+                  map: map,
+                icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABkUlEQVRoge2Wu0oDQRhGz2RVNM0K9mpjFYmKlwfw0liI72AEq4CI2qb2QiQIpshriBbmCRSMIcHCRh9BRQIxu2PhCrGIZDO/jOCcbpf59puzM3sBh+N/o6QvmL7OTqK8DLAMjEenH4ErdFCqzhdqkn1iAql6bsBrPOeBLSDRYVigFGetQX+nnso1JXpFBKLJXwCLXQU05SDpr0pIdLpTsYjufHeTB1AsJRovRxLdxisQ7fkK4MWMBipk6m4hXzfpN18B5W0Sf/IAHh4bpvXGAvrzbdNbVusV035jAQWjBukx036Jh9jkGsbPoITAk6UsILGFFGWDuEkWkFiBgCIQ9pAMQ6WLpvXGAtF7/DR2UOtCbfbk3rRf5EscDPm7aC67Ha/hPEgO70t0iwjUU7lmv3pbA46B1g9D39Ecjrz663/qZ66d6dvshA77MlrrvW9FSh2oRKtUmSk8SPaJC3yRvtnW7cfVufyvdIlsIZs4Ads4Ads4Ads4Ads4Ads4Ads4Ads4Ads4Ads4Ads4AYfDYZcPELVi827iFpYAAAAASUVORK5CYII="
+                });
+            } else {  
+              var marker = new google.maps.Marker({
+                position: window[dynamicVarName],
+                map: map,
+                icon: 'https://img.icons8.com/material/48/000000/map-pin--v1.png'
+              });
+            }
+          }
+        //Start of Routes
+        zlFetch(urlroutes,{token: token})
+        .then(response => {
+        var routes = response.body;
+        for(var route of routes){
+        var line = new google.maps.Polyline({
+          path: [eval(route.Origin), eval(route.Destination)],
+          strokeOpacity: 0,
+          icons: [
+          {
+              icon: Symbolarrow,
+              offset: '100',
+              fillOpacity: 1,
+              strokeOpacity: 1,
+            },
+          {
+            icon: lineSymbol,
+            offset: '0',
+            repeat: '20px'
+          }
+          ],
+          map: map
+        });
+      };
+
+        })
+        .catch(error => {
+          const headers = error.headers;
+          const body = error.body;
+          const status = error.status;
+        });
+        //End of Routes
+        })
+        .catch(error => {
+          const headers = error.headers;
+          const body = error.body;
+          const status = error.status;
+        });
+///////////////End location////////////////////
+      })
+      .catch(error => {
+        const headers = error.headers;
+        const body = error.body;
+        const status = error.status;
+      });
+});
+    // wait until the promise returns us a value
+    let result = await promise; 
+  
+    // "Now it's done!"
+    var running = false
+    alert(result); 
+};
+
+
+firstAsync()
+     
+};
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPq7ppKU_PmsRcuD83bmaCZFt1q1L-8sQ&callback=initMap&maptype=roadmap">
+    </script>
+  </body>
+</html>
