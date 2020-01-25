@@ -7,7 +7,14 @@ html
     script(type='text/javascript' src='/js/jquery.min.js')
     script(type='text/javascript' src='/js/bootstrap.min.js')
     script(type='text/javascript' src='/javascripts/launch.js')
+    meta( name='viewport', content='width=device-width, initial-scale=1', maxiumum-scale='1', user-scalable='0' )
   body
-    if expressFlash.length > 0
-     .alert.alert-primary <strong>FLASH!</strong> #{ expressFlash }
-    block content
+   if(messages.length > 0)
+     div(class="alert alert-primary alert-dismissible fade show" role="alert",style="text-align:center") #{ messages }
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+       span(aria-hidden="true") &times;
+   if(error.length > 0)
+    div(class="alert alert-danger alert-dismissible fade show" role="alert",style="text-align:center") #{ error }
+     button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+       span(aria-hidden="true") &times;
+  block content

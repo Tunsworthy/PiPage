@@ -4,7 +4,7 @@ var rpio = require('rpio');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {title: 'Pi Page', expressFlash: req.flash('success'), sessionFlash: res.locals.sessionFlash });
+  res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error') });
 });
 
 router.all('/relay/:gpio/:status', function(req, res,next){
@@ -35,9 +35,6 @@ router.all('/relay/:gpio/:status', function(req, res,next){
             console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
             req.flash('success', 'Power on sent');
             res.redirect(301, '/');    
-
-            req.flash('success', 'Power off sent');
-            res.redirect(301, '/');
         };
 
 });
