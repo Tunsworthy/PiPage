@@ -52,7 +52,7 @@ function temphum(reading){
             var reading
             reading.temperature = temperature
             reading.humidity = humidity
-        }
+        })
 //Read Past transactions
 resolve(reading);
 })
