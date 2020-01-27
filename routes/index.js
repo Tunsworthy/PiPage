@@ -5,8 +5,10 @@ var sensor = require("node-dht-sensor");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  temphum();
-  res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error') });
+  temphum(reading)
+    .then((reading) => {
+        res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error'),temperature: reading.temperature,humidity: reading.humidity });
+    }) 
 });
 
 router.all('/relay/:gpio/:status', function(req, res,next){
@@ -44,15 +46,14 @@ router.all('/relay/:gpio/:status', function(req, res,next){
 module.exports = router;
 
 
-function temphum(tempoutput){
-    sensor.read(11, 4, function(err,temperature,humidity) {
-        if (!err) {
-        //    tempoutput.temperature = temperature
-        //    tempoutput.humidity = humidity
-        //return tempoutput
-        //console.log(tempoutput)
-            console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
-        return tempoutput}
-    });
-    return tempoutput
+function temphum(reading){
+    return new Promise((resolve,reject) => {
+        sensor.read(11, 4, function(err,temperature,humidity) {
+            var reading
+            reading.temperature = temperature
+            reading.humidity = humidity
+        }
+//Read Past transactions
+resolve(reading);
+})
 }
