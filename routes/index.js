@@ -5,7 +5,7 @@ var sensor = require("node-dht-sensor");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  temphum(reading)
+  temphum()
     .then((reading) => {
         res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error'),temperature: reading.temperature,humidity: reading.humidity });
     }) 
