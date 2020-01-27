@@ -45,14 +45,14 @@ module.exports = router;
 
 
 function temphum(tempoutput){
-    sensor.read(11, 4, function(err,tempoutput,temperature,humidity) {
+    sensor.read(11, 4, function(err,temperature,humidity) {
         if (!err) {
-            tempoutput.temperature = temperature
-            tempoutput.humidity = humidity
-        return tempoutput
+        //    tempoutput.temperature = temperature
+        //    tempoutput.humidity = humidity
+        //return tempoutput
         //console.log(tempoutput)
             console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
-        }
+        return tempoutput}
     });
     return tempoutput
 }
