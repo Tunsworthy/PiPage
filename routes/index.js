@@ -50,8 +50,8 @@ function temphum(tempoutput){
             tempoutput.temperature = temperature
             tempoutput.humidity = humidity
         return tempoutput
-        console.log(tempoutput)
-            //console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
+        //console.log(tempoutput)
+            console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
         }
     });
     return tempoutput
