@@ -15,7 +15,9 @@ block content
       a(class="btn btn-primary" href="/relay/2/1") Power Off 
    .col
     .card.card-primary(style="max-width:250px")
-     .card-header #[strong Current temperature]
+     .card-header #[strong Enviroments]
      .card-body 
-      p #{temperature}
+      p #[strong Temperature] #{temperature}
+      | &nbsp;
+        #[strong Humidity] #{humidity}
    .col(style="width:35%")
