@@ -45,7 +45,7 @@ module.exports = router;
 
 
 function temphum(tempoutput){
-    sensor.read(11, 4, function(err,tempoutput) {
+    sensor.read(11, 4, function(err,tempoutput,temperature,humidity) {
         if (!err) {
             tempoutput.temperature = temperature
             tempoutput.humidity = humidity
