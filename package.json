@@ -14,7 +14,7 @@
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "morgan": "~1.9.1",
     "popper.js": "^1.14.3",
     "rpio": "^0.9.22"
