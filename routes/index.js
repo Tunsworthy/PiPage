@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var rpio = require('rpio');
+var sensor = require("node-dht-sensor");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  temphum();
   res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error') });
 });
 
@@ -40,3 +42,17 @@ router.all('/relay/:gpio/:status', function(req, res,next){
 });
 
 module.exports = router;
+
+
+function temphum(tempoutput){
+    sensor.read(11, 4, function(err,tempoutput) {
+        if (!err) {
+            tempoutput.temperature = temperature
+            tempoutput.humidity = humidity
+        return tempoutput
+        console.log(tempoutput)
+            //console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
+        }
+    });
+    return tempoutput
+}

@@ -6,17 +6,20 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "cookie-parser": "~1.4.3",
+    "bootstrap": "^4.4.1",
+    "clean-css": "^4.2.2",
+    "constantinople": "^4.0.1",
+    "cookie-parser": "^1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.0",
+    "express": "^4.17.1",
     "express-flash": "0.0.2",
-    "express-session": "^1.15.6",
+    "express-session": "^1.17.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.1",
     "morgan": "~1.9.1",
-    "popper.js": "^1.14.3",
-    "rpio": "^0.9.22"
+    "node-dht-sensor": "^0.4.0",
+    "popper.js": "^1.16.1",
+    "rpio": "^0.9.23"
   }
 }
