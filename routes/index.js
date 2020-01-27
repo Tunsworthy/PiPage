@@ -49,7 +49,7 @@ module.exports = router;
 function temphum(reading){
     return new Promise((resolve,reject) => {
         sensor.read(11, 4, function(err,temperature,humidity) {
-            var reading
+            var reading = []
             reading.temperature = temperature
             reading.humidity = humidity
         })
