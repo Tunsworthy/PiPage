@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "bootstrap": "^4.1.1",
+    "bootstrap": "^4.3.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
@@ -14,13 +14,8 @@
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
-<<<<<<< HEAD:PiPage/package.json
     "jquery": "^3.4.0",
-    "morgan": "~1.9.0",
-=======
-    "jquery": "^3.3.1",
     "morgan": "~1.9.1",
->>>>>>> master:package.json
     "popper.js": "^1.14.3",
     "rpio": "^0.9.22"
   }
