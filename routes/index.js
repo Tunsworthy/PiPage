@@ -53,6 +53,7 @@ function temphum(reading){
             var reading = []
             reading.temperature = temperature
             reading.humidity = humidity
+            console.log(reading)
         })
 //Read Past transactions
 resolve(reading);
