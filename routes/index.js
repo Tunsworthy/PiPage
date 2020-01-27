@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
   temphum()
     .then((reading) => {
         res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error'),temperature: reading.temperature,humidity: reading.humidity });
-    }) 
+    })
+    .catch((error) => console.log(error))  
 });
 
 router.all('/relay/:gpio/:status', function(req, res,next){
