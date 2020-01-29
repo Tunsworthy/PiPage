@@ -27,7 +27,7 @@ router.all('/relay/:gpio/:status', function(req, res,next){
     
     //If Power on 
         if (action.status === 0) {
-            rpio.sleep(1);
+            rpio.sleep(3);
             rpio.write(action.gpio,(action.status + 1));
             console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
             req.flash('info', 'Power on sent');
