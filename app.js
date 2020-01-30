@@ -32,9 +32,9 @@ app.use(session({
 }));
 
 app.use(flash());
-indexRouter(app);
 
-//app.use('/', indexRouter);
+
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // prepare server
