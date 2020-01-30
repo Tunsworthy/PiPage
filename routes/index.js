@@ -23,13 +23,11 @@ router.all('/relay/:gpio/:status', function(req, res,next){
         gpiochange(action)
     if (action.status === 0) {
         req.flash('info', 'Power on sent');
-        res.redirect(301, '/');
     }
     if (action.status === 1) {
         req.flash('info', 'Power Off');
-        res.redirect(301, '/');
     }
-
+    res.redirect(301, '/');
 });
 
 router.get('/read/:gpio', function(req,res){
