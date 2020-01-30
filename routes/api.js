@@ -4,7 +4,7 @@ var rpio = require('rpio');
 var sensor = require("node-dht-sensor");
 
 
-router.get('/:gpio', function(req,res){
+router.get('/status/:gpio', function(req,res){
     var status
     status = (rpio.read(req.params.gpio) ? 'high' : 'low');
     res.json(status)
