@@ -6,6 +6,8 @@ var logger = require('morgan');
 var session = require('express-session');
 var flash = require('express-flash');
 var rpio = require('rpio');
+var bodyParser = require('body-parser');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
