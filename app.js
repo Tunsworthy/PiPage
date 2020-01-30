@@ -40,7 +40,7 @@ app.use(session({
 app.use(flash());
 indexRouter(app);
 //usersRouter(app);
-api(ap);
+api(app);
 
 //app.use('/', indexRouter);
 //app.use('/users', usersRouter);
