@@ -39,7 +39,7 @@ app.use(session({
 
 app.use(flash());
 indexRouter(app);
-usersRouter(app);
+//usersRouter(app);
 api(ap);
 
 //app.use('/', indexRouter);
