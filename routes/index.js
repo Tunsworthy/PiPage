@@ -1,10 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var rpio = require('rpio');
-var sensor = require("node-dht-sensor");
+'use strict';
 
+module.exports = function(app) {
 /* GET home page. */
-router.get('/', function(req, res, next) {
+app.get('/', function(req, res, next) {
   temphum()
     .then((reading) => {
         res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error'),temperature: reading.temperature,humidity: reading.humidity });
@@ -12,7 +10,7 @@ router.get('/', function(req, res, next) {
     .catch((error) => console.log(error))  
 });
 
-router.all('/relay/:gpio/:status', function(req, res,next){
+app.all('/relay/:gpio/:status', function(req, res,next){
     rpio.init({mapping: 'gpio'});
     //0 = high
     //1 = low
@@ -30,14 +28,7 @@ router.all('/relay/:gpio/:status', function(req, res,next){
     res.redirect(301, '/');
 });
 
-router.get('/read/:gpio', function(req,res){
-    var status
-    status = (rpio.read(req.params.gpio) ? 'high' : 'low');
-    res.json(status)
-
-});
-
-module.exports = router;
+}
 
 function gpiochange(action){
     rpio.open(action.gpio, rpio.OUTPUT, rpio.LOW);
