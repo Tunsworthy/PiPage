@@ -14,6 +14,8 @@ router.get('/', function(req, res, next) {
 
 router.all('/relay/:gpio/:status', function(req, res,next){
     rpio.init({mapping: 'gpio'});
+    //0 = high
+    //1 = low
     //change the Params into int
     var action = {};
         action.status = (+req.params.status);
@@ -23,14 +25,15 @@ router.all('/relay/:gpio/:status', function(req, res,next){
 
     //Send action (on or off)
     rpio.write(action.gpio,action.status);
-    console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
+    //console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
     
     //If Power on 
         if (action.status === 0) {
+            action.status = (action.status + 1)
             rpio.sleep(3);
-            rpio.write(action.gpio,(action.status + 1));
-            console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
-            req.flash('info', 'Power on sent');
+            rpio.write(action.gpio,action.status);
+            //console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
+            req.flash('info', 'Power on sent ${rpio.read(action.gpio}');
             res.redirect(301, '/');
         };
      //If power off
@@ -53,7 +56,7 @@ function temphum(reading){
             var reading = []
             reading.temperature = temperature
             reading.humidity = humidity
-            console.log(reading)
+            //console.log(reading)
             resolve(reading);
         })
 //Read Past transactions
