@@ -5,8 +5,8 @@ block content
  p Welcome to #{title} #{gpiostate}
  #container-fluid
   .row
-   .col(style="width:35%")
-   .col
+   .col(class="col-sm")
+   .col(class="col-md-auto")
     .card.card-primary(style="max-width:250px")
      .card-header #[strong Relay Action ]
      .card-body 
@@ -19,5 +19,4 @@ block content
       p(style='white-space:pre;')
        | #[strong Temperature:] #{temperature}ºC
        | #[strong Humidity:] #{humidity}%
-   .col(style="width:35%")
-   
+   .col(class="col-sm")
