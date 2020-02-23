@@ -1,23 +1,25 @@
 extends layout
 
 block content
- h1= title
- p Welcome to #{title} #{gpiostate}
- .div.container
+ .container
+  .row
+    .col
+     h1= title
+     p Welcome to #{title}
   .row
    .col(class="col-sm")
    .col(class="col-md-auto")
-    .col.col-sm
-      div.card.card-primary
-        div.card-header #[strong Relay Action ]
-        div.card-body 
+    .col-sm
+      .card.card-primary
+        .card-header #[strong Relay Action ]
+        .card-body 
           a(class="btn btn-primary" href="/relay/2/0") Power On 
           | &nbsp;
           a(class="btn btn-primary" href="/relay/2/1") Power Off 
-    .col.col-sm
-      div.card.card-primary
-       div.card-header #[strong Environmentals]
-       div.card-body 
+    .col-sm
+      card.card-primary
+       .card-header #[strong Environmentals]
+       .card-body 
         p(style='white-space:pre;')
          | #[strong Temperature:] #{temperature}ºC
          | #[strong Humidity:] #{humidity}%
