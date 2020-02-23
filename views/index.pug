@@ -7,16 +7,18 @@ block content
   .row
    .col(class="col-sm")
    .col(class="col-md-auto")
-    .card.card-primary(style="max-width:250px")
-     .card-header #[strong Relay Action ]
-     .card-body 
-      a(class="btn btn-primary" href="/relay/2/0") Power On 
-      | &nbsp;
-      a(class="btn btn-primary" href="/relay/2/1") Power Off 
-    .card.card-primary(style="max-width:250px")
-     .card-header #[strong Environmentals]
-     .card-body 
-      p(style='white-space:pre;')
-       | #[strong Temperature:] #{temperature}ºC
-       | #[strong Humidity:] #{humidity}%
+    .col.col-sm
+      div.card.card-primary
+        div.card-header #[strong Relay Action ]
+        div.card-body 
+          a(class="btn btn-primary" href="/relay/2/0") Power On 
+          | &nbsp;
+          a(class="btn btn-primary" href="/relay/2/1") Power Off 
+    .col.col-sm
+      div.card.card-primary
+       div.card-header #[strong Environmentals]
+       div.card-body 
+        p(style='white-space:pre;')
+         | #[strong Temperature:] #{temperature}ºC
+         | #[strong Humidity:] #{humidity}%
    .col(class="col-sm")
