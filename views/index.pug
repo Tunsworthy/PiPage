@@ -9,18 +9,19 @@ block content
   .row
    .col-sm
    .col-md-auto
-    .col-xs-6
-      .card.card-primary
-        .card-header #[strong Relay Action ]
-        .card-body 
-          a(class="btn btn-primary" href="/relay/2/0") Power On 
-          | &nbsp;
-          a(class="btn btn-primary" href="/relay/2/1") Power Off 
-    .col-xs-6
-      .card.card-primary
-       .card-header #[strong Environmentals]
-       .card-body 
-        p(style='white-space:pre;')
-         | #[strong Temperature:] #{temperature}ºC
-         | #[strong Humidity:] #{humidity}%
+    .row
+      .col-xs-6
+        .card.card-primary
+          .card-header #[strong Relay Action ]
+          .card-body 
+            a(class="btn btn-primary" href="/relay/2/0") Power On 
+            | &nbsp;
+            a(class="btn btn-primary" href="/relay/2/1") Power Off 
+      .col-xs-6
+        .card.card-primary
+         .card-header #[strong Environmentals]
+         .card-body 
+          p(style='white-space:pre;')
+           | #[strong Temperature:] #{temperature}ºC
+           | #[strong Humidity:] #{humidity}%
    .col-sm
