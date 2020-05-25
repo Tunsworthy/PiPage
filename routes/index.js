@@ -32,7 +32,7 @@ app.all('/relay/', function(req, res,next){
 }
 
 function gpiochange(action){
-    rpio.open(action.gpio, rpio.OUTPUT, rpio.LOW);
+    rpio.open(action.gpio, rpio.OUTPUT, rpio.HIGH);
     //Send action (on or off)
     rpio.write(action.gpio,action.status);
     console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));    
