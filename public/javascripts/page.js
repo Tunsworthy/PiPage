@@ -1,6 +1,6 @@
 
 function poweron(gpio,status){
-		var url = /relay/gpio/status
+		var url = "/relay/"+gpio+"/"+status
 		fetch(url)
 		.then(
 			function(response) {
