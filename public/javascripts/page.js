@@ -13,8 +13,9 @@ function changestatus(gpio,status){
 				// Examine the text in the response  
 				response.json()
 					.then(function(data) {
-					console.log(data) 
-				});``
+					console.log(data)
+					alertbox(data.message,data.type)
+				});
 			}
 		)
 		.catch(function(err) {

@@ -17,22 +17,28 @@ app.all('/relay/', function(req, res,next){
     //1 = low
     //change the Params into int
     var action = {};
-        action.status = (+req.query.status);
+        rpio.read(action.gpio) = (+req.query.status);
         action.gpio = (+req.query.gpio);
-        gpiochange(action);
-    if (action.status === 0) {
-        req.flash('info', 'Power on sent');
-    }
-    if (action.status === 1) {
-        req.flash('info', 'Power Off');
-    }
+    rpio.open(action.gpio, rpio.OUTPUT);
+    rpio.write(action.gpio,action.status);
     console.log("reading GPIO",rpio.read(action.gpio));
-    res.json("data")
+    
+    var alert = {}
+    if(rpio.read(action.gpio) === rpio.read(action.gpio)){
+        alert.type = "success"
+        alert.message = "GPIO set correctly"
+    }
+    if(rpio.read(action.gpio) !== rpio.read(action.gpio)){
+        alert.type = "danger"
+        alert.message = "GPIO set error"
+    }
+    res.json(alert)
 
 });
 
 }
 
+/*
 function gpiochange(action){
     rpio.open(action.gpio, rpio.OUTPUT);
     console.log("GPIO Actions", action)
@@ -56,9 +62,9 @@ function gpiochange(action){
             //req.flash('info', 'Power Off sent');
             //res.redirect(301, '/');    
         };
-*/
-};
 
+};
+*/
 
 function temphum(reading){
     return new Promise((resolve,reject) => {
