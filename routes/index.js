@@ -3,7 +3,7 @@
 module.exports = function(app) {
 /* GET home page. */
 app.get('/', function(req, res, next) {
-  temphum()
+  environmentals()
     .then((reading) => {
         res.render('index', {title: 'Pi Page',messages: req.flash('info'),error: req.flash('error'),temperature: reading.temperature,humidity: reading.humidity });
     })
@@ -37,9 +37,9 @@ app.all('/relay/', function(req, res,next){
 
 });
 
-app.get('/temperature',function(req, res,next){
+app.get('/environmentals',function(req, res,next){
     console.log("temperature",req.query)
-temphum()
+environmentals()
     .then((reading) =>{
        console.log(reading)
         res.json(reading)
@@ -50,7 +50,7 @@ temphum()
 
 
 
-function temphum(reading){
+function environmentals(reading){
     return new Promise((resolve,reject) => {
         sensor.read(11, 4, function(err,temperature,humidity) {
         var reading = {}
