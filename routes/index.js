@@ -10,15 +10,15 @@ app.get('/', function(req, res, next) {
     .catch((error) => console.log(error))  
 });
 
-app.all('/relay/:gpio/:status', function(req, res,next){
-    console.log(req.params)
+app.all('/relay/', function(req, res,next){
+    console.log(req.query)
     rpio.init({mapping: 'gpio'});
     //0 = high
     //1 = low
     //change the Params into int
     var action = {};
-        action.status = (+req.params.status);
-        action.gpio = (+req.params.gpio);
+        action.status = (+req.query.status);
+        action.gpio = (+req.query.gpio);
         gpiochange(action);
     if (action.status === 0) {
         req.flash('info', 'Power on sent');
