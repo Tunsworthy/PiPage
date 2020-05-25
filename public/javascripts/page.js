@@ -4,7 +4,7 @@ function sleep(ms) {
 }
 
 
-function changestatus(gpio,status){
+function changestatus(gpio,status,alert){
 		var url = `/relay?gpio=${gpio}&status=${status}`
 		fetch(url)
 		.then(
@@ -19,7 +19,9 @@ function changestatus(gpio,status){
 				response.json()
 					.then(function(data) {
 					console.log(data)
+				if(!alert){
 					alertbox(data.message,data.type)
+				}
 				});
 			}
 		)
@@ -30,7 +32,7 @@ function changestatus(gpio,status){
 
 
 async function pcpoweron(gpio,status){
-	changestatus(gpio,status)
+	changestatus(gpio,status,fasle)
 	await sleep(1000);
 	changestatus(gpio,1)
 }
