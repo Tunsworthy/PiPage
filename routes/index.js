@@ -17,8 +17,8 @@ app.all('/relay/', function(req, res,next){
     //1 = low
     //change the Params into int
     var action = {};
-        action.status = req.query.status;
-        action.gpio = req.query.gpio;
+        action.status = (+req.query.status);
+        action.gpio = (+req.query.gpio);
         gpiochange(action);
     if (action.status === 0) {
         req.flash('info', 'Power on sent');
