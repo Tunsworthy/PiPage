@@ -39,6 +39,21 @@ app.all('/relay/', function(req, res,next){
 
 }
 
+
+app.get('/temperature',function(req, res,next){
+    console.log("temperature",req.query)
+    
+    return new Promise((resolve,reject) => {
+        sensor.read(+req.query.gpio, 4, function(err,temperature,humidity) {
+            var reading = []
+            reading.temperature = temperature
+            reading.humidity = humidity
+            //console.log(reading)
+            resolve(reading);
+        })
+res.json(reading)
+})
+
 /*
 function gpiochange(action){
     rpio.open(action.gpio, rpio.OUTPUT);
