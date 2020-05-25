@@ -1,6 +1,6 @@
 
 function changestatus(gpio,status){
-		var url = `/relay?gpio=${gpio}&?status=${status}`
+		var url = `/relay?gpio=${gpio}&status=${status}`
 		fetch(url)
 		.then(
 			function(response) {
