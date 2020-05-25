@@ -11,6 +11,7 @@ app.get('/', function(req, res, next) {
 });
 
 app.all('/relay/:gpio/:status', function(req, res,next){
+    console.log(req.params)
     rpio.init({mapping: 'gpio'});
     //0 = high
     //1 = low
@@ -18,7 +19,7 @@ app.all('/relay/:gpio/:status', function(req, res,next){
     var action = {};
         action.status = (+req.params.status);
         action.gpio = (+req.params.gpio);
-        gpiochange(action)
+        gpiochange(action);
     if (action.status === 0) {
         req.flash('info', 'Power on sent');
     }
@@ -32,10 +33,9 @@ app.all('/relay/:gpio/:status', function(req, res,next){
 
 function gpiochange(action){
     rpio.open(action.gpio, rpio.OUTPUT, rpio.LOW);
-
     //Send action (on or off)
     rpio.write(action.gpio,action.status);
-    //console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
+    console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
     
     //If Power on 
        /* if (action.status === 0) {
