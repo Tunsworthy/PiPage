@@ -14,10 +14,10 @@ block content
         .card
           .card-header #[strong Relay Action ]
           .card-body 
-            a(class="btn btn-primary" onclick="poweron(2,0)") Power On 
+            a(class="btn btn-primary" onclick="statuschange(2,0)") Power On 
             |
             |
-            a(class="btn btn-primary" href="/relay/2/1") Power Off 
+            a(class="btn btn-primary" onclick="statuschange(2,1)") Power Off 
       .col-sm-auto
         .card
          .card-header #[strong Environmentals]
