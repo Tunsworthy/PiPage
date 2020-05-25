@@ -17,7 +17,7 @@ app.all('/relay/', function(req, res,next){
     //1 = low
     //change the Params into int
     var action = {};
-        action.gpio = +req.query.status;
+        action.status = +req.query.status;
         action.gpio = +req.query.gpio;
     console.log(action)
     rpio.open(action.gpio, rpio.OUTPUT);
