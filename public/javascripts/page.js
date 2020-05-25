@@ -32,7 +32,7 @@ function changestatus(gpio,status,alert){
 
 
 async function pcpoweron(gpio,status){
-	changestatus(gpio,status,fasle)
+	changestatus(gpio,status,false)
 	await sleep(1000);
 	changestatus(gpio,1)
 }
