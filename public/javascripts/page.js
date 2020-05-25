@@ -19,7 +19,7 @@ function changestatus(gpio,status,alert){
 				response.json()
 					.then(function(data) {
 					console.log(data)
-				if(!alert){
+				if(alert !== false || typeof alert === "undefinied"){
 					alertbox(data.message,data.type)
 				}
 				});
