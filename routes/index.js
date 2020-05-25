@@ -37,9 +37,6 @@ app.all('/relay/', function(req, res,next){
 
 });
 
-}
-
-
 app.get('/temperature',function(req, res,next){
     console.log("temperature",req.query)
     
@@ -52,7 +49,13 @@ app.get('/temperature',function(req, res,next){
             resolve(reading);
         })
 res.json(reading)
-})
+});
+
+
+}
+
+
+
 
 /*
 function gpiochange(action){
