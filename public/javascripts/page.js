@@ -1,5 +1,5 @@
 
-function statuschange(gpio,status){
+function poweron(gpio,status){
 		var url = `/relay?gpio=${gpio}&?status=${status}`
 		fetch(url)
 		.then(
