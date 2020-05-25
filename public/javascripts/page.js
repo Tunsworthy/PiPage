@@ -58,8 +58,8 @@ function environmentals() {
 					console.log(data)
 					var message = `temperature: ${data.temperature} humidity: ${data.humidity}`
 					
-					document.getElementById('temperature').textContent = '${data.temperature}';
-					document.getElementById('humidity').textContent = '${data.humidity}';
+					document.getElementById('temperature').textContent = data.temperature;
+					document.getElementById('humidity').textContent = data.humidity;
 					alertbox(message,data.type)
 				});
 			}
