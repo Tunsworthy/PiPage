@@ -39,19 +39,11 @@ app.all('/relay/', function(req, res,next){
 
 app.get('/temperature',function(req, res,next){
     console.log("temperature",req.query)
-    
-var reading = function temphum(reading){
-    return new Promise((resolve,reject) => {
-        sensor.read(+req.query.gpio, 4, function(err,temperature,humidity) {
-        var reading = []
-        reading.temperature = temperature
-        reading.humidity = humidity
-//console.log(reading)
-        return(reading);
-        })
+temphum()
+    .then((reading) =>{
+       console.log(reading)
+        res.json(reading)
     })
-}
-res.json(reading)
 });
 
 }
