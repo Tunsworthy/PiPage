@@ -1,4 +1,9 @@
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 function changestatus(gpio,status){
 		var url = `/relay?gpio=${gpio}&status=${status}`
 		fetch(url)
@@ -21,4 +26,11 @@ function changestatus(gpio,status){
 		.catch(function(err) {
 			console.error('Fetch Error -', err);
 		});
+}
+
+
+async function pcpoweron(gpio,status){
+	changestatus(gpio,status)
+	await sleep(1000);
+	changestatus(gpio,1)
 }
