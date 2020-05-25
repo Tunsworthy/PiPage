@@ -47,10 +47,10 @@ app.get('/temperature',function(req, res,next){
             reading.humidity = humidity
             //console.log(reading)
             resolve(reading);
-        })
+        });
+    })
 res.json(reading)
 });
-
 
 }
 
