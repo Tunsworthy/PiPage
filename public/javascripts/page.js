@@ -56,9 +56,8 @@ function environmentals() {
 				response.json()
 					.then(function(data) {
 					console.log(data)
-				if(alert !== false || typeof alert === "undefinied"){
-					alertbox(data.message,data.type)
-				}
+					message = "temperature: ${data.temperature} humidity: ${data.humidity}"	
+					alertbox(message,data.type)
 				});
 			}
 		)
