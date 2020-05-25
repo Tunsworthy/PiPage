@@ -26,7 +26,7 @@ app.all('/relay/', function(req, res,next){
     if (action.status === 1) {
         req.flash('info', 'Power Off');
     }
-    console.log(rpio.read(req.query.gpio));
+    console.log(rpio.read(action.gpio));
     res.json("data")
 
 });
