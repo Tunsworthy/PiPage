@@ -26,7 +26,7 @@ app.all('/relay/:gpio/:status', function(req, res,next){
     if (action.status === 1) {
         req.flash('info', 'Power Off');
     }
-    res.redirect(301, '/');
+    res.json(data)
 });
 
 }
@@ -35,8 +35,7 @@ function gpiochange(action){
     rpio.open(action.gpio, rpio.OUTPUT, rpio.LOW);
     //Send action (on or off)
     rpio.write(action.gpio,action.status);
-    console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
-    
+    console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));    
     //If Power on 
        /* if (action.status === 0) {
             action.status = (action.status + 1)
