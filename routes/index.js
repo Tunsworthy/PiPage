@@ -45,12 +45,11 @@ app.get('/temperature',function(req, res,next){
             var reading = []
             reading.temperature = temperature
             reading.humidity = humidity
-            //console.log(reading)
-            res.json(reading)
+            console.log(reading)
         });
     })
 });
-
+res.json(reading)
 }
 
 
