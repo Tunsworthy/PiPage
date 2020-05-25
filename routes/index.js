@@ -26,7 +26,7 @@ app.all('/relay/', function(req, res,next){
     if (action.status === 1) {
         req.flash('info', 'Power Off');
     }
-    console.log(rpio.read(action.gpio));
+    console.log("reading GPIO",rpio.read(action.gpio));
     res.json("data")
 
 });
@@ -35,6 +35,7 @@ app.all('/relay/', function(req, res,next){
 
 function gpiochange(action){
     rpio.open(action.gpio, rpio.OUTPUT);
+    console.log("GPIO Actions", action)
     //Send action (on or off)
     rpio.write(action.gpio,action.status);
     console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));    
