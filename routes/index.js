@@ -38,7 +38,7 @@ function gpiochange(action){
     //console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
     
     //If Power on 
-        if (action.status === 0) {
+       /* if (action.status === 0) {
             action.status = (action.status + 1)
             rpio.sleep(1);
             rpio.write(action.gpio,action.status);
@@ -54,7 +54,7 @@ function gpiochange(action){
             //req.flash('info', 'Power Off sent');
             //res.redirect(301, '/');    
         };
-
+*/
 };
 
 
