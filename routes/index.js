@@ -50,35 +50,6 @@ temphum()
 
 
 
-
-/*
-function gpiochange(action){
-    rpio.open(action.gpio, rpio.OUTPUT);
-    console.log("GPIO Actions", action)
-    //Send action (on or off)
-    rpio.write(action.gpio,action.status);
-    console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));    
-    //If Power on 
-       /* if (action.status === 0) {
-            action.status = (action.status + 1)
-            rpio.sleep(1);
-            rpio.write(action.gpio,action.status);
-            //console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
-            //req.flash('info', 'Power on sent');
-            //res.redirect(301, '/');
-        };
-     //If power off
-        if (action.status === 1) {
-            rpio.sleep(10);
-            rpio.write(action.gpio,(action.status - 1));
-            //console.log('write action ' + (rpio.read(action.gpio) ? 'high' : 'low'));
-            //req.flash('info', 'Power Off sent');
-            //res.redirect(301, '/');    
-        };
-
-};
-*/
-
 function temphum(reading){
     return new Promise((resolve,reject) => {
         sensor.read(11, 4, function(err,temperature,humidity) {
