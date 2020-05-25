@@ -47,7 +47,7 @@ var reading = function temphum(reading){
         reading.temperature = temperature
         reading.humidity = humidity
 //console.log(reading)
-        resolve(reading);
+        return(reading);
         })
     })
 }
