@@ -48,8 +48,9 @@ app.get('/temperature',function(req, res,next){
             console.log(reading)
         });
     })
-});
 res.json(reading)
+});
+
 }
 
 
