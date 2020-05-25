@@ -56,8 +56,8 @@ function environmentals() {
 				response.json()
 					.then(function(data) {
 					console.log(data)
-					message = "temperature: ${data.temperature} humidity: ${data.humidity}"	
-					alertbox(message,data.type)
+					message = "temperature: "+data.temperature+ "humidity: "+data.humidity	
+					alertbox(toString(message),data.type)
 				});
 			}
 		)
