@@ -26,7 +26,7 @@ app.all('/relay/', function(req, res,next){
     if (action.status === 1) {
         req.flash('info', 'Power Off');
     }
-    res.json(data)
+    res.json("data")
 });
 
 }
